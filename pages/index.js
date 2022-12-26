@@ -1,10 +1,8 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from '@next/font/google'
-import { Navbar } from "flowbite-react";
-
-
-const inter = Inter({ subsets: ['latin'] })
+import Head from "next/head";
+import Image from "next/image";
+import { Navbar, Dropdown } from "flowbite-react";
+import Link from "next/link";
+import { useState, useEffect } from "react";
 
 export default function Home() {
   return (
@@ -15,48 +13,107 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Navbar
-        fluid={true}
-        rounded={true}
-      >
-        <Navbar.Brand href="https://flowbite.com/">
-          <img
-            src="https://flowbite.com/docs/images/logo.svg"
-            className="mr-3 h-6 sm:h-9"
-            alt="Flowbite Logo"
-          />
-          <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-            Flowbite
-          </span>
-        </Navbar.Brand>
-        <Navbar.Toggle />
-        <Navbar.Collapse>
-          <Navbar.Link
-            href="/navbars"
-            active={true}
-          >
-            Home
-          </Navbar.Link>
-          <Navbar.Link>
-            <button id="mega-menu-full-dropdown-button" data-collapse-toggle="mega-menu-full-dropdown"
-              class="flex justify-between items-center py-2 pr-4 pl-3 w-full font-medium text-gray-700 border-b border-gray-100 md:w-auto hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 dark:text-gray-400 md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700">
-              Company 
-              <svg class="ml-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-              </svg>
-            </button>
-          </Navbar.Link>
-          <Navbar.Link href="/navbars">
-            Services
-          </Navbar.Link>
-          <Navbar.Link href="/navbars">
-            Pricing
-          </Navbar.Link>
-          <Navbar.Link href="/navbars">
-            Contact
-          </Navbar.Link>
-        </Navbar.Collapse>
-      </Navbar>
+      <div className="container mx-auto">
+        <Navbar fluid={true} rounded={true}>
+          <Navbar.Brand href="https://flowbite.com/">
+            <img
+              src="https://flowbite.com/docs/images/logo.svg"
+              className="mr-3 h-6 sm:h-9"
+              alt="Flowbite Logo"
+            />
+            <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
+              Flowbite
+            </span>
+          </Navbar.Brand>
+          <Navbar.Toggle />
+          
+          <Navbar.Collapse>
+            <Navbar.Link href="/navbars" active={true}>
+              Home
+            </Navbar.Link>
+            <Navbar.Link>
+              <Dropdown label="Convert" inline={true}>
+                <Dropdown.Item>Dashboard</Dropdown.Item>
+                <Dropdown.Item>Settings</Dropdown.Item>
+                <Dropdown.Item>Earnings</Dropdown.Item>
+                <Dropdown.Item>Sign out</Dropdown.Item>
+              </Dropdown>
+            </Navbar.Link>
+            <Navbar.Link>
+              <Dropdown label="Price" inline={true}>
+                <Dropdown.Item className="grid py-5 px-4 mx-auto max-w-screen-xl text-gray-900 dark:text-white sm:grid-cols-2 md:grid-cols-3 md:px-6">
+                  <ul aria-labelledby="mega-menu-full-dropdown-button">
+                    <li>
+                      <Link href="/" className="block p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
+                        Home
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="#" className="block p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
+                        <div className="font-semibold">Segmentation</div>
+                        <span className="text-sm font-light text-gray-500 dark:text-gray-400">Connect with third-party tools that you're already using.</span>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="#" className="block p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
+                        <div className="font-semibold">Marketing CRM</div>
+                        <span className="text-sm font-light text-gray-500 dark:text-gray-400">Connect with third-party tools that you're already using.</span>
+                      </Link>
+                    </li>
+                  </ul>
+                  <ul>
+                    <li>
+                      <Link href="#" className="block p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
+                        <div className="font-semibold">Online Stores</div>
+                        <span className="text-sm font-light text-gray-500 dark:text-gray-400">Connect with third-party tools that you're already using.</span>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="#" className="block p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
+                        <div className="font-semibold">Segmentation</div>
+                        <span className="text-sm font-light text-gray-500 dark:text-gray-400">Connect with third-party tools that you're already using.</span>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="#" className="block p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
+                        <div className="font-semibold">Marketing CRM</div>
+                        <span className="text-sm font-light text-gray-500 dark:text-gray-400">Connect with third-party tools that you're already using.</span>
+                      </Link>
+                    </li>
+                  </ul>
+                  <ul className="hidden md:block">
+                    <li>
+                      <Link href="#" className="block p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
+                        <div className="font-semibold">Audience Management</div>
+                        <span className="text-sm font-light text-gray-500 dark:text-gray-400">Connect with third-party tools that you're already using.</span>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="#" className="block p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
+                        <div className="font-semibold">Creative Tools</div>
+                        <span className="text-sm font-light text-gray-500 dark:text-gray-400">Connect with third-party tools that you're already using.</span>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="#" className="block p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
+                        <div className="font-semibold">Marketing Automation</div>
+                        <span className="text-sm font-light text-gray-500 dark:text-gray-400">Connect with third-party tools that you're already using.</span>
+                      </Link>
+                    </li>
+                  </ul>
+                </Dropdown.Item>
+              </Dropdown>
+            </Navbar.Link>
+
+            <Navbar.Link href="/navbars">Pricing</Navbar.Link>
+            <Navbar.Link href="/navbars">Contact</Navbar.Link>
+          </Navbar.Collapse>
+
+          <div class="flex md:order-2 item-center">
+              <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Get started</button>
+          </div>
+        </Navbar>
+      </div>
     </>
-  )
+  );
 }
